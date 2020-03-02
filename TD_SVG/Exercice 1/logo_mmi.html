@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Logo MMI en SVG</title>
+</head>
+<body>
+    <style>
+        body {
+            size: 100%;
+        }
+        #ellipse {
+            fill: #7FDD4C		;
+            stroke: white;
+            stroke-width: 20px;
+        }
+        #polyline {
+            fill: black;
+            position: relative;
+        }
+        #texte {
+            fill: white;
+            z-index: 1000;
+            margin-left: auto;
+            margin-right: auto;
+            text-anchor: middle;
+        }
+        svg {
+            background-color: #051149;
+            margin-left: auto;
+            margin-right: auto;
+            display: table-cell;
+            vertical-align: middle
+        }
+        #line1 {
+            fill: black;
+        }
+    </style>
+    <svg width="400" height="300">
+        <ellipse id="ellipse" cx="200" cy="150" rx="100" ry="100"></ellipse>
+        <text id="texte" font-size="3rem" text-anchor="middle" x="200" y="150">MMI</text>
+        <line  id="line1" x1="100" y1="200" x2="300" y2="200"></line>
+        <!-- <polyline id="polyline" points="50,150 200,50 350,150"></polyline> --!>
+    </svg>
+</body>
+</html>
