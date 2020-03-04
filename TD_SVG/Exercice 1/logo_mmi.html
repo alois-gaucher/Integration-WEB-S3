@@ -10,7 +10,7 @@
             size: 100%;
         }
         #ellipse {
-            fill: #7FDD4C		;
+            fill: #7FDD4C;
             stroke: white;
             stroke-width: 20px;
         }
@@ -37,10 +37,10 @@
         }
     </style>
     <svg width="400" height="300">
-        <ellipse id="ellipse" cx="200" cy="150" rx="100" ry="100"></ellipse>
+        <circle id="ellipse" cx="200" cy="150" r="100"></circle>
         <text id="texte" font-size="3rem" text-anchor="middle" x="200" y="150">MMI</text>
-        <line  id="line1" x1="100" y1="200" x2="300" y2="200"></line>
-        <!-- <polyline id="polyline" points="50,150 200,50 350,150"></polyline> --!>
+        <animate id="animCircle" xlink:href="#ellipse" attributeName="r" from="0" to="35%" dur="1s" repeatCount="indefinite"/>
+        <animate id="animTexte" xlink:href="#texte" attributeName="font-size" from="0" to="3rem" dur="1s" repeatCount="indefinite"/>
     </svg>
 </body>
 </html>
