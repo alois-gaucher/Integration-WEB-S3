@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="container">
+        <h1>Subscribe to the Newsletter</h1>
+
+        <form class="form" id="form" action="validation.php" method="post">
+            <input id="prenom" name="prenom" type="text" placeholder="Prénom *" required>
+            <input id="email" name="email" type="email" placeholder="E-mail *" required pattern="^(([-\w\d]+)(\.[-\w\d]+)*@([-\w\d]+)(\.[-\w\d]+)*(\.([a-zA-Z]{2,5}|[\d]{1,3})){1,2})$"
+            >
+            <button type="submit" id="submit">Envoyer</button>
+        </form>
+    </div>
+
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $('form').submit(function (event) {
+            event.preventDefault();
+            console.info('Envoi du formulaire');
+            envoiFormulaire();
+        });
+
+        function envoiFormulaire() {
+            console.info('Fonction envoi déclenchée');
+            var postData = $('form').serialize();
+            console.info(postData);
+
+            $.ajax({
+                type: 'POST',
+                url: 'validation.php',
+                data: postData,
+                dataType: 'json',
+                success: function (reponse) {
+                    console.info(reponse);
+                },
+                error: function () {
+                    console.log('Erreur de validation');
+                },
+            });
+        };
+    });
+</script>
+</body>
+</html>
