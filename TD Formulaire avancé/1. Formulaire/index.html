@@ -37,9 +37,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function() {
+        $('input').on('focus', function() {
+            // Au clic sur le champ
+            $('input').removeClass('invalid');
+            $('#erreur').remove();
+        });
         $('form').submit(function (event) {
             event.preventDefault();
             console.info('Envoi du formulaire');
+            $('#erreur').remove();
+            $('input').removeClass('invalid');
             envoiFormulaire();
         });
 
@@ -71,8 +78,8 @@
                         $.each(reponse, function(champ, erreur) {
                             console.info('Il y a une/des erreur(s)');
                             console.info(champ + " => " + erreur);
-                            msgErreur = '<span>' + erreur + '</span>';
-                            $('#' + champ).after(msgErreur);
+                            msgErreur = '<span id="erreur">' + erreur + '</span>';
+                            $('#' + champ).addClass('invalid').after(msgErreur);
                         });
                         }
                     },
