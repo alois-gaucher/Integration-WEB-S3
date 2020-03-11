@@ -18,6 +18,7 @@
             >
             <button type="submit" id="submit">Envoyer</button>
         </form>
+        <span id="msg-validation">Vous êtes bien inscrit !</span>
     </div>
 
     <ul class="bg-bubbles">
@@ -42,6 +43,12 @@
             envoiFormulaire();
         });
 
+        // Lit une musique lors de la validation
+        function championdumonde() {
+            var audio = new Audio('copadelmundo.mp3');
+            audio.play();
+        };
+
         function envoiFormulaire() {
             console.info('Fonction envoi déclenchée');
             var postData = $('form').serialize();
@@ -54,8 +61,22 @@
                 dataType: 'json',
                 success: function (reponse) {
                     console.info(reponse);
-                },
-                error: function () {
+                    // Si tout est OK, affichage d'un message de confirmation
+                    if (reponse === true) {
+                        $('#msg-validation').slideToggle();
+                        championdumonde();
+                    }
+                    // Si tout n'est pas OK, affichage des erreurs
+                    else {
+                        $.each(reponse, function(champ, erreur) {
+                            console.info('Il y a une/des erreur(s)');
+                            console.info(champ + " => " + erreur);
+                            msgErreur = '<span>' + erreur + '</span>';
+                            $('#' + champ).after(msgErreur);
+                        });
+                        }
+                    },
+                error: function (reponse) {
                     console.log('Erreur de validation');
                 },
             });
