@@ -44,6 +44,19 @@
                 context.drawImage(ballon, x, y);
                 context.drawImage(barre, 0, -25);
                 context.drawImage(barre, 0, 475);
+
+                // Déplacement du ballon
+                // TODO: Modifier pour prendre en compte les niveaux
+                x += vitx;
+
+                // Si le ballon touche le bord droit
+                if(x > 475) {
+                    vitx = - vitx;
+                }
+                // Si le ballon touche le bord gauche
+                else if(x < 25) {
+                    vitx = + vitx;
+                }
             }, 10);
         }
 
