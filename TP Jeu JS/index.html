@@ -11,7 +11,7 @@
 
     var x=250;
     var y=250;
-    var vity=0;
+    var vity=1.2;
     var vitx=4;
     var sauter=0;
 
@@ -41,24 +41,43 @@
 
             // Timer
             var montimer =setInterval(function () {
+
+                // Mise en place des images dans le canvas
+                context.drawImage(background, 0, 0);    // Background
+                context.drawImage(ballon, x, y);    // Ballon
+                context.drawImage(barre, 0, -25);   // Obstacle haut
+                context.drawImage(barre, 0, 475);   // Obstacle bas
+
                 // Déplacement du ballon
                 // TODO: Modifier pour prendre en compte les niveaux
                 x += vitx;
+                y += vity;
 
-                // Si le ballon touche le bord droit
-                if(x > 475) {
+                if (x > 475) { // Si le ballon touche le bord droit
                     vitx = - vitx;
-                }
-                // Si le ballon touche le bord gauche
-                else if(x < -25) {
-                    vitx = - vitx;
+                    vitx += 0.25;
+                    console.log('Touche à droite x = ' + x); // Débogage
                 }
 
-                // Mise en place des images dans le canvas
-                context.drawImage(background, 0, 0);
-                context.drawImage(ballon, x, y);
-                context.drawImage(barre, 0, -25);
-                context.drawImage(barre, 0, 475);
+                if (x < -25) { // Si le ballon touche le bord gauche
+                    vitx = - vitx;
+                    vitx += 0.25;
+                    console.log('Touche à gauche x = ' + x); // Débogage
+                }
+
+                if (y > 450) { // La balle touche en bas
+                    vity = (-vity*0.8);
+                    y = 450;
+                    compteur = 0;
+                    console.log('Touche en bas y = ' + y); // Débogage
+                }
+                if (y < 25) { // La balle touche en haut
+                    vity = (-vity*0.8);
+                    y = 25;
+                    compteur = 0;
+                    console.log('Touche en haut y = ' + y); // Débogage
+                }
+
             }, 10);
         }
 
