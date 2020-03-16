@@ -27,7 +27,7 @@
             var canvas1 = document.getElementById('monCanvas');
             var context = canvas1.getContext('2d');
 
-            // Création d'une image
+            // Création du ballon
             var ballon = new Image();
             ballon.src = "ballon.png";
 
@@ -35,16 +35,12 @@
             var barre = new Image();
             barre.src = "barre.png";
 
-            // Fond de couleur
-            context.fillStyle="red";
-            context.fillRect(0, 0, 500, 500);
+            // Création du background
+            var background = new Image();
+            background.src = "background.png";
 
             // Timer
             var montimer =setInterval(function () {
-                context.drawImage(ballon, x, y);
-                context.drawImage(barre, 0, -25);
-                context.drawImage(barre, 0, 475);
-
                 // Déplacement du ballon
                 // TODO: Modifier pour prendre en compte les niveaux
                 x += vitx;
@@ -54,9 +50,15 @@
                     vitx = - vitx;
                 }
                 // Si le ballon touche le bord gauche
-                else if(x < 25) {
-                    vitx = + vitx;
+                else if(x < -25) {
+                    vitx = - vitx;
                 }
+
+                // Mise en place des images dans le canvas
+                context.drawImage(background, 0, 0);
+                context.drawImage(ballon, x, y);
+                context.drawImage(barre, 0, -25);
+                context.drawImage(barre, 0, 475);
             }, 10);
         }
 
