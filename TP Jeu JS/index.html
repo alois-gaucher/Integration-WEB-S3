@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeu en JS</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+
+    var x=250;
+    var y=250;
+    var vity=0;
+    var vitx=4;
+    var sauter=0;
+
+    var oldsauter=0;
+    var xobs=475;
+    var yobs=800;
+    var compteur=0;
+
+
+
+    $(document).ready( function()
+        {
+            var canvas1 = document.getElementById('monCanvas');
+            var context = canvas1.getContext('2d');
+
+            // Création d'une image
+            var ballon = new Image();
+            ballon.src = "ballon.png";
+
+            // Création d'une barre
+            var barre = new Image();
+            barre.src = "barre.png";
+
+            // Fond de couleur
+            context.fillStyle="red";
+            context.fillRect(0, 0, 500, 500);
+
+            // Timer
+            var montimer =setInterval(function () {
+                context.drawImage(ballon, x, y);
+                context.drawImage(barre, 0, -25);
+                context.drawImage(barre, 0, 475);
+            }, 10);
+        }
+
+    );
+
+</script>
+<body>
+    <canvas width='500' height='500' id="monCanvas">
+</html>
+</body>
+</html>

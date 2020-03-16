@@ -55,7 +55,7 @@ body :-ms-input-placeholder {
 }
 #msg-validation {
     display: none;
-    font-size: 2rem;
+    font-size: 1rem;
     transition-duration: 1s;
     transition-timing-function: ease-in-out;
     font-weight: 200;
@@ -67,7 +67,7 @@ body :-ms-input-placeholder {
 #erreur {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    font-size: 2rem;
+    font-size: 1rem;
     transition-duration: 1s;
     transition-timing-function: ease-in-out;
     font-weight: 200;
