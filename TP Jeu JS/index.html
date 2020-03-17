@@ -27,6 +27,9 @@
             var canvas1 = document.getElementById('monCanvas');
             var context = canvas1.getContext('2d');
 
+            // Texte score
+            context.font = '20px calibri';
+
             // Prise en compte de l'appui sur la barre espace
             $('body').keydown(function(ev){
                 if(ev.keyCode == 32) sauter=1 ;
@@ -44,6 +47,10 @@
             var barre = new Image();
             barre.src = "barre.png";
 
+            // Création d'un obstacle
+            var obstacle = new Image();
+            obstacle.src = "obstacle.png";
+
             // Création du background
             var background = new Image();
             background.src = "background.png";
@@ -60,12 +67,16 @@
                 if (x > 475) { // Si le ballon touche le bord droit
                     vitx = -(vitx*0.8);
                     x = 475;
+                    compteur += 1;
+                    yobs = Math.random() * (450 - -25) + -25; // Déplace aléatoirement l'obstacle
                     console.log('Touche à droite x = ' + x); // Débogage
                 }
 
                 if (x < -25) { // Si le ballon touche le bord gauche
                     vitx = -(vitx*0.8);
                     x = -25;
+                    compteur += 1;
+                    yobs = Math.round(Math.random()*350)+20; // Déplace aléatoirement l'obstacle
                     console.log('Touche à gauche x = ' + x); // Débogage
                 }
 
@@ -73,12 +84,15 @@
                     vity = (-vity*0.8);
                     y = 450;
                     compteur = 0;
+                    yobs = Math.round(Math.random()*350)+20; // Déplace aléatoirement l'obstacle
                     console.log('Touche en bas y = ' + y); // Débogage
                 }
+
                 if (y < 20) { // La balle touche en haut
                     vity = (-vity*0.8);
                     y = 20;
                     compteur = 0;
+                    yobs = Math.round(Math.random()*350)+20; // Déplace aléatoirement l'obstacle
                     console.log('Touche en haut y = ' + y); // Débogage
                 }
 
@@ -91,8 +105,10 @@
                 // Mise en place des images dans le canvas
                 context.drawImage(background, 0, 0);    // Background
                 context.drawImage(ballon, x, y);    // Ballon
+                context.drawImage(obstacle, xobs, yobs);   // Obstacle côté
                 context.drawImage(barre, 0, -25);   // Obstacle haut
                 context.drawImage(barre, 0, 475);   // Obstacle bas
+                context.fillText("Score: " + compteur, 25, 50)
 
             }, 10); // La valeur du timer est de 10 ms, le canvas se rafraîchit toutes les 10 ms
         }
