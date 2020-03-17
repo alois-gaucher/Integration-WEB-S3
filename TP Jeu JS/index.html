@@ -101,8 +101,7 @@
                     console.log('Touche en haut y = ' + y); // Débogage
                 }
 
-                // Prise en compte de l'appui sur la barre espace
-                if( sauter == 1 && oldsauter == 0 ) {
+                if( sauter == 1 && oldsauter == 0 ) { // Prise en compte de l'appui sur la barre espace
                     oldsauter= 1;
                     vity -= 4;
                     vitx *= 1.05;
