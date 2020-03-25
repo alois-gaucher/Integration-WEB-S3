@@ -73,6 +73,7 @@
                     // Et si je touche l'obstacle
                     if (y >= (yobs - 50) && y <= (yobs + 89)) {
                         compteur = 0;
+                        niveau = 1;
                     }
                     xobs = -25; // Change l'obstacle de côté
                     yobs = Math.round(Math.random() * 330) + 20; // Déplace verticalement l'obstacle
@@ -86,6 +87,7 @@
                     // Et si je touche l'obstacle
                     if (y >= (yobs - 50) && y <= (yobs + 89)) {
                         compteur = 0;
+                        niveau = 1;
                     }
                     xobs = 475; // Change l'obstacle de côté
                     yobs = Math.round(Math.random() * 330) + 20; // Déplace verticalement l'obstacle
@@ -125,6 +127,18 @@
                 context.fillText("Score: " + compteur, 25, 50);
                 context.fillText("Niveau: " + niveau, 25, 75)
 
+                // Prise en compte des niveaux
+                switch(compteur) {
+                    case 3:
+                        niveau = 2;
+                        break;
+                    case 5:
+                        niveau = 3;
+                        break;
+                    case 10:
+                        niveau = 4;
+                        break;
+                }
             }, 10); // La valeur du timer est de 10 ms, le canvas se rafraîchit toutes les 10 ms
         }
     );
