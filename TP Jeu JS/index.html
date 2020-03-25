@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Jeu en JS</title>
@@ -17,7 +17,7 @@
 
     var oldsauter = 0;
     var xobs = 475;
-    var yobs = 800;
+    var yobs = 400;
     var compteur = 0;
     var niveau = 1;
 
@@ -39,7 +39,6 @@
                     sauter = 0;
                     oldsauter = 0
                 }
-
             });
 
             // Création du ballon
@@ -71,6 +70,14 @@
                     vitx = -(vitx * 0.8);
                     x = 450;
                     compteur += 1;
+                    // Et si je touche l'obstacle
+                    if (x >= 450 && y <= (yobs + 30)) {
+                        compteur = 0;
+                    }
+                    // Et si je touche l'obstacle
+                    if (x >= 450 && y <= (yobs - 30)) {
+                        compteur = 0;
+                    }
                     xobs = -25; // Change l'obstacle de côté
                     yobs = Math.round(Math.random() * 330) + 20; // Déplace verticalement l'obstacle
                     console.log('Touche à droite x = ' + x); // Débogage
@@ -80,6 +87,14 @@
                     vitx = -(vitx * 0.8);
                     x = -25;
                     compteur += 1;
+                    // Et si je touche l'obstacle
+                    if (x <= 25 && y <= (yobs + 30)) {
+                        compteur = 0;
+                    }
+                    // Et si je touche l'obstacle
+                    if (x <= 25 && y <= (yobs - 30)) {
+                        compteur = 0;
+                    }
                     xobs = 475; // Change l'obstacle de côté
                     yobs = Math.round(Math.random() * 330) + 20; // Déplace verticalement l'obstacle
                     console.log('Touche à gauche x = ' + x); // Débogage
@@ -124,7 +139,8 @@
 
 </script>
 <body>
-<canvas width='500' height='500' id="monCanvas">
+<canvas width='500' height='500' id="monCanvas"></canvas>
+<div>Open source: check <a href="https://github.com/couquino/Integration-WEB-S3/tree/master/TP%20Jeu%20JS">Github</a></div>
 </html>
 </body>
 </html>
