@@ -71,11 +71,7 @@
                     x = 450;
                     compteur += 1;
                     // Et si je touche l'obstacle
-                    if (x >= 450 && y <= (yobs + 30)) {
-                        compteur = 0;
-                    }
-                    // Et si je touche l'obstacle
-                    if (x >= 450 && y <= (yobs - 30)) {
+                    if (y <= (yobs + 50) && y >= (yobs + 89)) {
                         compteur = 0;
                     }
                     xobs = -25; // Change l'obstacle de côté
@@ -88,11 +84,7 @@
                     x = -25;
                     compteur += 1;
                     // Et si je touche l'obstacle
-                    if (x <= 25 && y <= (yobs + 30)) {
-                        compteur = 0;
-                    }
-                    // Et si je touche l'obstacle
-                    if (x <= 25 && y <= (yobs - 30)) {
+                    if (y >= (yobs - 50) && y <=(yobs + 89)) {
                         compteur = 0;
                     }
                     xobs = 475; // Change l'obstacle de côté
