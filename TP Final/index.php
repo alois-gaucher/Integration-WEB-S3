@@ -48,8 +48,8 @@
                 <table class="table mx-auto">
                     <thead>
                     <tr>
-                        <th scope="col">Pseudo</th>
-                        <th scope="col">Message</th>
+                        <th scope="col"><p class="h4 mb-4">Pseudo</p></th>
+                        <th scope="col"><p class="h4 mb-4">Message</p></th>
                     </tr>
                     </thead>
                     <tbody id="chat">
@@ -60,16 +60,15 @@
                 <form id="formulaire" method="POST" action="chat/dire.php" class="border border-light p-5 mx-auto">
                     <p class="h4 mb-4 text-center">Envoyer un message</p>
                     <div class="md-form">
-                        <input name="pseudo" type="text" id="pseudo" class="form-control">
                         <label for="pseudo">Pseudo</label>
+                        <input name="pseudo" type="text" id="pseudo" class="form-control">
                     </div>
                     <div class="md-form">
-                    <textarea name="message" type="text" id="message" class="md-textarea form-control"
-                              rows="3"></textarea>
                         <label for="message">Message</label>
+                        <textarea name="message" type="text" id="message" class="md-textarea form-control"></textarea>
                     </div>
                     <button class="btn btn-info btn-block my-4" id="envoi" type="submit">Envoyer le message</button>
-                    <button class="btn btn-alert btn-block my-4" id="wizz">Wizz!</button>
+                    <button class="btn btn-info btn-block my-4" id="wizz">Wizz!</button>
             </div>
             </form>
         </div>
@@ -101,6 +100,12 @@
 </div>
 
 <!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="js/bootstrap.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!---->
 <!-- Smooth Scroll -->
 <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
 <script>
@@ -114,9 +119,56 @@
         }
     });
 </script>
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="js/bootstrap.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Tchat -->
+<script>
+    $('#wizz').click(function (e) {
+        e.preventDefault(); // on empêche le bouton d'envoyer le formulaire
+        var pseudo = $('#pseudo').val();
+        var message = 'A envoyé un Wizz !';
+
+        if (pseudo != "") { // on vérifie que les variables ne sont pas vides
+            $.ajax({
+                url: "chat/dire.php", // on donne l'URL du fichier de traitement
+                type: "POST", // la requête est de type POST
+                data: "pseudo=" + pseudo + "&message=" + message // et on envoie nos données
+            });
+
+            $('#chat').prepend('<tr><td>' + pseudo + '</td><td>' + message + '</td></tr>'); // on ajoute le message dans la zone prévue
+            var audio = new Audio('./chat/nudge.mp3');
+            audio.play();
+        }
+        else (alert('Veuillez entrer un pseudo !'));
+    });
+
+</script>
+<script>
+    $('#envoi').click(function (e) {
+        e.preventDefault(); // on empêche le bouton d'envoyer le formulaire
+
+        var pseudo = $('#pseudo').val();
+        var message = $('#message').val();
+
+        if (pseudo != "" && message != "") { // on vérifie que les variables ne sont pas vides
+            $.ajax({
+                url: "chat/dire.php", // on donne l'URL du fichier de traitement
+                type: "POST", // la requête est de type POST
+                data: "pseudo=" + pseudo + "&message=" + message // et on envoie nos données
+            });
+            $('#message').val('');
+            $('#chat').prepend('<tr><td>' + pseudo + '</td><td>' + message + '</td></tr>'); // on ajoute le message dans la zone prévue
+        }
+        else alert('Veuillez écrire un pseudo et/ou un message !')
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        setInterval(function () {
+            $.get("chat/affiche.php").done(function (donnees) {
+                $("#chat").html(donnees);
+            });
+        }, 1000);
+    });
+</script>
+<!---->
 </body>
 </html>
