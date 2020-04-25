@@ -133,7 +133,7 @@
                         </style>
                         <svg class="text-right" width="400" height="300">
                             <circle id="ellipse" cx="200" cy="150" r="100" stroke="white" stroke-width="20px"></circle>
-                            <text id="texte" font-size="3rem" text-anchor="middle" x="50%" y="50%">MMI</text>
+                            <text id="texte" font-size="3rem" text-anchor="middle" x="200" y="150">MMI</text>
                             <animate id="animCircle" xlink:href="#ellipse" attributeName="r" from="0" to="35%" dur="1s" repeatCount="indefinite"/>
                             <animate id="animStroke" xlink:href="#ellipse" attributeName="stroke-width" from="1px" to="20px" dur="0.5s" repeatCount="indefinite" begin="animCircle.end"/>
                             <animate id="animTexte" xlink:href="#texte" attributeName="font-size" from="0" to="3rem" dur="1s" repeatCount="indefinite"/>
