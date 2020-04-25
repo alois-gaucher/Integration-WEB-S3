@@ -179,6 +179,16 @@
     </div>
 </div>
 
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://alois-gaucher.fr/"> Aloïs GAUCHER</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
@@ -295,7 +305,6 @@
             var montimer = setInterval(function () {
 
                 // Déplacement du ballon
-                // TODO: Modifier pour prendre en compte les niveaux
                 x += vitx;
                 vity += 0.05;
                 y += vity;
