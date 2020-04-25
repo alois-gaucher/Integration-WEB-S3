@@ -43,6 +43,10 @@
 </div>
 
 <div id="realisations">
+    <!-- Separator -->
+    <hr class="mt-3 mb-3">
+    <!---->
+
     <!-- Tchat -->
     <div class="row m-0 justify-content-center">
         <div class="container pt-lg-3">
@@ -78,12 +82,8 @@
         </div>
     </div>
 
-    <!-- Separator -->
-    <hr class="mt-3 mb-3">
-    <!---->
-
     <!-- Jeu JS -->
-    <div class="container">
+    <div class="container d-none d-xl-block pt-3 pb-3">
         <div class="row">
             <div class="col">
                 <p class="text-left">Ce jeu entièrement codé en Jquery utilise la touche "5" de votre pavé numérique pour fonctionner.
@@ -91,7 +91,7 @@
                 <p class="text-left">Ah, et il est aussi totalement open-source, il est disponible à cette adresse: <a href="https://github.com/couquino/Integration-WEB-S3/tree/master/TP%20Jeu%20JS">Github</a>.</p>
             </div>
             <div class="col">
-                <div class="row m-0 justify-content-center d-none d-xl-block">
+                <div class="row m-0 justify-content-center">
                     <div class="container pt-lg-3">
                         <canvas class="" width='500' height='500' id="monCanvas"></canvas>
                     </div>
@@ -101,79 +101,81 @@
     </div>
     <!---->
 
-    <!-- Separator -->
-    <hr class="mt-3 mb-3">
-    <!---->
-
     <!-- Logo Animé -->
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <style>
-                    #ellipse {
-                        fill: #7FDD4C;
-                    }
-                    #texte {
-                        fill: white;
-                        z-index: 1000;
-                        margin-left: auto;
-                        margin-right: auto;
-                        text-anchor: middle;
-                    }
-                    svg {
-                        background-color: #051149;
-                        margin-left: auto;
-                        margin-right: auto;
-                        display: table-cell;
-                        vertical-align: middle
-                    }
-                    #line1 {
-                        fill: black;
-                    }
-                </style>
-                <svg width="400" height="300">
-                    <circle id="ellipse" cx="200" cy="150" r="100" stroke="white" stroke-width="20px"></circle>
-                    <text id="texte" font-size="3rem" text-anchor="middle" x="200" y="150">MMI</text>
-                    <animate id="animCircle" xlink:href="#ellipse" attributeName="r" from="0" to="35%" dur="1s" repeatCount="indefinite"/>
-                    <animate id="animStroke" xlink:href="#ellipse" attributeName="stroke-width" from="1px" to="20px" dur="0.5s" repeatCount="indefinite" begin="animCircle.end"/>
-                    <animate id="animTexte" xlink:href="#texte" attributeName="font-size" from="0" to="3rem" dur="1s" repeatCount="indefinite"/>
-                </svg>
-            </div>
-            <div class="col">
-                <p class="text-left">Ce logo a été dessiné avec du code SVG. L'animation, elle, a été faite en CSS 3.</p>
-                <p class="text-left">Lui aussi est totalement open-source, et il est disponible à cette adresse: <a href="https://github.com/couquino/Integration-WEB-S3/tree/master/TD_SVG/Exercice%201">Github</a>.</p>
+    <section class="content-section video-background-holder pt-3 pb-3">
+        <div class="pattern-overlay">
+            <video class="min-vh-100 min-vw-100" autoplay muted loop>
+                <source src="img/video_background.mp4" type="video/mp4">
+            </video>
+            <div class="container vertical-center">
+                <div class="row">
+                    <div class="col">
+                        <style>
+                            #ellipse {
+                                fill: #7FDD4C;
+                            }
+                            #texte {
+                                fill: white;
+                                z-index: 1000;
+                                margin-left: auto;
+                                margin-right: auto;
+                                text-anchor: middle;
+                            }
+                            svg {
+                                margin-left: auto;
+                                margin-right: auto;
+                                display: table-cell;
+                                vertical-align: middle
+                            }
+                            #line1 {
+                                fill: black;
+                            }
+                        </style>
+                        <svg class="text-right" width="400" height="300">
+                            <circle id="ellipse" cx="200" cy="150" r="100" stroke="white" stroke-width="20px"></circle>
+                            <text id="texte" font-size="3rem" text-anchor="middle" x="50%" y="50%">MMI</text>
+                            <animate id="animCircle" xlink:href="#ellipse" attributeName="r" from="0" to="35%" dur="1s" repeatCount="indefinite"/>
+                            <animate id="animStroke" xlink:href="#ellipse" attributeName="stroke-width" from="1px" to="20px" dur="0.5s" repeatCount="indefinite" begin="animCircle.end"/>
+                            <animate id="animTexte" xlink:href="#texte" attributeName="font-size" from="0" to="3rem" dur="1s" repeatCount="indefinite"/>
+                        </svg>
+                    </div>
+                    <div class="col">
+                        <p class="text-left">Ce logo a été dessiné avec du code SVG. L'animation, elle, a été faite en CSS 3.</p>
+                        <p class="text-left">Lui aussi est totalement open-source, et il est disponible à cette adresse: <a href="https://github.com/couquino/Integration-WEB-S3/tree/master/TD_SVG/Exercice%201">Github</a>.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     <!---->
 
 </div>
 
-<!-- Separator -->
-<hr>
-<!---->
-
 <!-- Contact form-->
 <div id="contact" class="row m-0 justify-content-center">
     <div class="container-fluid pt-5 p-3">
-        <form>
+        <form id="form" action="validation.php" method="post">
+            <h1 class="display-4">Contactez-moi</h1>
+            <p class="lead">Ou envoyez-moi un mail à <a class="text-white" href="mailto:hello@alois-gaucher.fr">hello@alois-gaucher.fr</a>.</p>
             <div class="form-row pt-3 pb-3">
                 <div class="col">
-                    <input required type="text" class="form-control form-control-lg" placeholder="Nom">
+                    <input required type="text" name="nom" class="form-control form-control-lg" placeholder="Nom">
                 </div>
                 <div class="col">
-                    <input required type="text" class="form-control form-control-lg" placeholder="Prénom">
+                    <input required type="text" name="prenom" class="form-control form-control-lg" placeholder="Prénom">
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
-                    <textarea required class="form-control form-control-lg" placeholder="Message"></textarea>
+                    <textarea required class="form-control form-control-lg" name="message" placeholder="Message"></textarea>
                 </div>
             </div>
             <div class="form-row pt-3 pb-3 justify-content-lg-center">
                 <button type="submit" class="btn btn-lg btn-primary mb-2">Envoyer</button>
             </div>
         </form>
+        <span id="msg-validation">Votre message a été envoyé !</span>
+        <span id="erreur"></span>
     </div>
 </div>
 
@@ -184,6 +186,59 @@
 <script src="js/bootstrap.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!---->
+
+<!-- Contact Form Validation -->
+<script>
+    $(document).ready(function() {
+        $('input').on('focus', function () {
+            // Au clic sur le champ
+            $('input').removeClass('invalid');
+            $('#erreur').remove();
+        });
+        $('form').submit(function (event) {
+            event.preventDefault();
+            console.info('Envoi du formulaire');
+            $('#erreur').remove();
+            $('input').removeClass('invalid');
+            envoiFormulaire();
+        });
+
+        function envoiFormulaire() {
+            console.info('Fonction envoi déclenchée');
+            var postData = $('form').serialize();
+            console.info(postData);
+
+            $.ajax({
+                type: 'POST',
+                url: 'validation.php',
+                data: postData,
+                dataType: 'json',
+                success: function (reponse) {
+                    console.info(reponse);
+                    // Si tout est OK, affichage d'un message de confirmation
+                    if (reponse === true) {
+                        $('#msg-validation').slideToggle();
+                        championdumonde();
+                    }
+                    // Si tout n'est pas OK, affichage des erreurs
+                    else {
+                        $.each(reponse, function (champ, erreur) {
+                            console.info('Il y a une/des erreur(s)');
+                            console.info(champ + " => " + erreur);
+                            msgErreur = '<span id="erreur">' + erreur + '</span>';
+                            $('#' + champ).addClass('invalid').after(msgErreur);
+                        });
+                    }
+                },
+                error: function (reponse) {
+                    console.log('Erreur de validation');
+                },
+            });
+        };
+    )};
+</script>
+<!---->
+
 <!-- Jeu JS -->
 <script type="text/javascript">
 
@@ -378,6 +433,7 @@
     });
 </script>
 <!---->
+
 <!-- Smooth Scroll -->
 <script src="js/zenscroll-min.js"></script>
 <!---->
