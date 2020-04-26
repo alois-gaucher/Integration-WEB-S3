@@ -82,8 +82,10 @@
         </div>
     </div>
 
+    <hr class="spacer">
+
     <!-- Jeu JS -->
-    <div class="container d-none d-xl-block pt-3 pb-3">
+    <div class="container  pt-3 pb-3">
         <div class="row">
             <div class="col">
                 <p class="text-left">Ce jeu entièrement codé en Jquery utilise la touche "5" de votre pavé numérique pour fonctionner.
@@ -93,7 +95,7 @@
             <div class="col">
                 <div class="row m-0 justify-content-center">
                     <div class="container pt-lg-3">
-                        <canvas class="" width='500' height='500' id="monCanvas"></canvas>
+                        <canvas class="" width="500px" id="monCanvas"></canvas>
                     </div>
                 </div>
             </div>
@@ -228,7 +230,6 @@
                     // Si tout est OK, affichage d'un message de confirmation
                     if (reponse === true) {
                         $('#msg-validation').slideToggle();
-                        championdumonde();
                     }
                     // Si tout n'est pas OK, affichage des erreurs
                     else {
@@ -252,7 +253,6 @@
 <!-- Jeu JS -->
 <script type="text/javascript">
 
-
     var x = 250;
     var y = 250;
     var vity = 1.8;
@@ -268,10 +268,28 @@
 
     $(document).ready(function () {
             var canvas1 = document.getElementById('monCanvas');
+            var heightRatio = 1;
             var context = canvas1.getContext('2d');
+            canvas1.height = canvas1.width * heightRatio;
 
             // Texte score
             context.font = '20px calibri';
+
+            /* Touchscreen */
+            /*var touchedElement = document.getElementById("monCanvas");
+            touchedElement.addEventListener("touchstart", funcTouchStart, false);
+            touchedElement.addEventListener("touchend", funcTouchEnd, false);
+            touchedElement.addEventListener("touchmove", funcTouchMove, false);
+
+            function funcTouchStart(e) {
+                sauter = 1;
+                var touches = e.changedTouches; //gets array of touch points, to get position
+            }
+
+            function funcTouchEnd(e) {
+                sauter = 0;
+                oldsauter = 0
+            }*/
 
             // Prise en compte de l'appui sur la barre espace
             $('body').keydown(function (ev) {
